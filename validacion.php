@@ -32,7 +32,7 @@ if ($descripcionOK && $ubicacionOK && $precioOK) {
 function insertar($imagen, $ubicacion, $descripcion, $precio)
 {
     include("conexion/conexion.php");
-    $query = "INSERT INTO alquiler (imagen,ubicacion,descripcion,precio) VALUES ('$imagen','$ubicacion','$descripcion','$precio')";
+    $query = "INSERT INTO ventas (imagen,ubicacion,descripcion,precio) VALUES ('$imagen','$ubicacion','$descripcion','$precio')";
     $conexion = conecta();
     $resultado = mysqli_query($conexion, $query);
 
