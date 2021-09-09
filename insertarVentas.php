@@ -71,7 +71,7 @@
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 <div class="col mb-5">
-                    <form action="validacion.php" method="post" enctype="multipart/form-data">
+                    <form action="validacionVenta.php" method="post" enctype="multipart/form-data">
                         Select image to upload:
                         <input type="file" name="image" /> <br>
                         <br><textarea name="ubicacion" id="unicacion" placeholder="Ubicacion" cols="50" rows="2"></textarea>

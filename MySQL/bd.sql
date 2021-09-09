@@ -25,5 +25,5 @@ imagen longblob,
 ubicacion varchar(100) not null,
 descripcion varchar(200) not null,
 precio double not null,
-PRIMARY KEY(idLote)
+PRIMARY KEY(idLotes)
 );
