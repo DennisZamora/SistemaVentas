@@ -32,7 +32,7 @@
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
-                            <li><a class="dropdown-item" href="alquiler.php">Rentas</a></li>
+                            <li><a class="dropdown-item" href="#!">Rentas</a></li>
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
@@ -46,7 +46,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item" style="text-align: right;"><a class="nav-link" href="login.php">Iniciar Sesion</a></li>     
+                    <li class="nav-item"><a class="nav-link" href="login.php">Iniciar Sesion</a></li>     
                 </ul>
                 <!-- <form class="d-flex">
                         <button class="btn btn-outline-dark" type="submit">
@@ -69,25 +69,70 @@
     </header>
     <!-- Section-->
     <?php
-    include('conexion/conexion.php');
-    $conexion = conecta();
-    $consulta = "select * from alquiler";
-    $resultado = mysqli_query($conexion, $consulta);
-    ?>
-    <form action="MoreInfo.php" method="GET">
-        <section class="py-5">
-            <div class="container px-4 px-lg-5 mt-5">
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                  
-        </section>
-    </form>
 
+    if (isset($_GET['idAlquiler'])) {
+        $id = $_GET['idAlquiler'];
+    } else {
+        $id = "";
+    }
+
+
+    $validacion = true;
+
+    require_once 'consulta.php';
+
+    $consulta = "SELECT * FROM alquiler where id=$id";
+
+    $query = consulta($consulta);
+
+    if ($query->num_rows > 0) {
+        while ($row = $query->fetch_assoc()) {
+            $imagen = $row["imagen"];
+            $ubicacion = $row["ubicacion"];
+            $descripcion = $row["descripcion"];
+            $precio = $row["precio"];
+        }
+    } else {
+        $validacion = false;
+    }
+    ?>
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                <div class="col mb-5">
+                    <?php
+                    echo '<img  height="300" src="data:image/jpeg;base64,' . base64_encode($imagen) . '"/>';                    
+                    ?>
+                    <?php
+                    $price = "<strong><i> Precio: </i> </strong>";
+                    $description = "<i> Descripcion: </i>";
+                    ?>
+                    <div>
+                        <!-- Product name-->
+                        <br/><h5 class="fw-bolder"><?php echo $ubicacion ?></h5>
+                        <!-- Product description -->
+                        <h9><?php echo $description;
+                            echo $descripcion ?></h9>
+                        <!-- Product price-->
+                        <p><?php echo $price;
+                            echo "$";
+                            echo $precio;  ?> </p>
+                        <!-- <span class="text-muted text-decoration-line-through">$20.00</span> -->
+                    </div>
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div >
+                            <button><a href="alquiler.php"><em><u>Volver al inicio</u></em></a></button>
+                        </div>
+                    </div>
+
+                </div>
+    </section>
     <!-- Footer-->
-    <!-- <footer class="py-5 bg-dark">
+    <footer class="py-5 bg-dark">
         <div class="container">
             <p class="m-0 text-center text-white">The Web Site created by Dennis Zamora Araya</p>
         </div>
-    </footer> -->
+    </footer>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->

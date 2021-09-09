@@ -45,8 +45,9 @@
                                 <hr class="dropdown-divider" />
                             </li>
                         </ul>
-                    </li>
-                    <li class="nav-item" style="text-align: right;"><a class="nav-link" href="login.php">Iniciar Sesion</a></li>     
+                    </li>  
+                   
+                    <li class="nav-item"><a class="nav-link" href="login.php">Iniciar Sesion</a></li>                
                 </ul>
                 <!-- <form class="d-flex">
                         <button class="btn btn-outline-dark" type="submit">
@@ -78,16 +79,63 @@
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                  
+                    <?php foreach ($resultado as $alquiler) { ?>
+                        <div class="col mb-5">
+                            <div class="card h-100">
+                                <!-- Sale badge-->
+                                <!-- <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div> -->
+                                <!-- Product Id -->
+                                <input type="hidden" name="id" value="<?php echo htmlspecialchars($alquiler['id']); ?>">
+                                <!-- Product image-->
+                                <?php
+                                echo '<img  height="170" src="data:image/jpeg;base64,' . base64_encode($alquiler['imagen']) . '"/>';
+                                ?>
+                                <!-- <img class="card-img-top" src="data:image/png;base64,<?php echo base64_encode($alquiter['imagen']); ?>" /> -->
+                                <!-- Product details-->
+                                <div class="card-body p-4">
+                                    <?php
+                                    $precio = "<strong><i> Precio: </i> </strong>";
+                                    $descripcion = "<i> Descripcion: </i>";
+                                    ?>
+                                    <div class="text-center">
+                                        <!-- Product name-->
+                                        <h5 class="fw-bolder"><?php echo $alquiler['ubicacion'] ?></h5>
+                                        <!-- Product reviews-->
+                                        <div class="d-flex justify-content-center small text-warning mb-2">
+                                            <div class="bi-star-fill"></div>
+                                            <div class="bi-star-fill"></div>
+                                            <div class="bi-star-fill"></div>
+                                            <div class="bi-star-fill"></div>
+                                            <div class="bi-star-fill"></div>
+                                        </div>
+                                        <!-- Product description -->
+                                        <h9><?php echo $descripcion;
+                                            echo $alquiler['descripcion'] ?></h9>
+                                        <!-- Product price-->
+                                        <p><?php echo $precio;
+                                            echo "$";
+                                            echo $alquiler['precio'];  ?> </p>
+                                        <!-- <span class="text-muted text-decoration-line-through">$20.00</span> -->
+                                    </div>
+                                </div>
+                                <!-- Product actions-->
+                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                    <div class="text-center">
+                                        <button type="submit" name="idAlquiler" class="btn btn-outline-dark mt-auto" value="<?php echo htmlspecialchars($alquiler['id']); ?>">Mas informacion</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
         </section>
     </form>
 
     <!-- Footer-->
-    <!-- <footer class="py-5 bg-dark">
+    <footer class="py-5 bg-dark">
         <div class="container">
             <p class="m-0 text-center text-white">The Web Site created by Dennis Zamora Araya</p>
         </div>
-    </footer> -->
+    </footer>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
