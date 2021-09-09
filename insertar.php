@@ -40,7 +40,7 @@
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
-                            <li><a class="dropdown-item" href="insertar.php">Agregar</a></li>
+                            <li><a class="dropdown-item" href="administrador/insertar.php">Agregar</a></li>
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
@@ -67,58 +67,25 @@
         </div>
     </header>
     <!-- Section-->
-    <?php
-    include('conexiones/conexion.php');
-    $conexion = conecta();
-    $consulta = "select * from alquiler";
-    $resultado = mysqli_query($conexion, $consulta);
-    ?>
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                <?php foreach ($resultado as $alquiler) { ?>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <input type="hidden" name="idBlogs" value="<?php echo htmlspecialchars($alquiler['id']); ?>">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Fancy Product</h5>
-                                    <!-- Product price-->
-                                    $40.00 - $80.00
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a>
-                            </div>
-
-                            
-                                <h3><?php echo htmlspecialchars($blog['tituloBlog']); ?></h3>
-                                <div><?php echo htmlspecialchars($blog['contenidoBlog']); ?></div>
-                                <div><?php echo $posted;
-                                        echo htmlspecialchars($blog['nombre']);
-                                        echo $date;
-                                        echo htmlspecialchars($blog['fecha_publicacion']); ?></div>
-                            </div>
-                            <div class="card-action right-align" style="padding: 15px 10px 10px 10px;">
-                                <button type="submit" name="idBlog" class="btn btn-outline-secondary" value="<?php echo htmlspecialchars($blog['idBlog']); ?>">More info</button>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                <?php } ?>
-
+                <div class="col mb-5">
+                    <form action="validacion.php" method="post" enctype="multipart/form-data">
+                        Select image to upload:
+                        <input type="file" name="image" /> <br>
+                        <br><textarea name="ubicacion" id="unicacion" placeholder="Ubicacion" cols="50" rows="2"></textarea>
+                        <br><textarea name="descripcion" id="descripcion" placeholder="Descripcion" cols="50" rows="2"></textarea>
+                        <br><input type="text" id="precio" placeholder="Precio" name="precio" /><br>
+                        <br><input type="submit" name="submit" value="Enviar" />
+                    </form>
+                </div>
+                
+            </div>
+        </div>
     </section>
     <!-- Footer-->
-    <footer class="py-5 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">The Web Site created by Dennis Zamora Araya</p>
-        </div>
-    </footer>
+
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
