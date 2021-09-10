@@ -76,10 +76,11 @@
                 <h6>Brandon Zamora: (+506) 8370-6711 <br><br>
                     Rocio Rico: (+52) 81-3402-6249</h6>
                     <br>
+                    <br>
+                <img height="400" width="500" src="images/logo.png" style="align-items: center;">
             </div>
             <div>
-                <br>
-                <img src="images/logo.png" style="align-items: center;">
+               
             </div>
 
 
