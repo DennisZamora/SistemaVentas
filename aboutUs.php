@@ -46,6 +46,7 @@
                             </li>
                         </ul>
                     </li>
+
                     <li class="nav-item"><a class="nav-link" href="login.php">Iniciar Sesion</a></li>
                 </ul>
                 <!-- <form class="d-flex">
@@ -63,82 +64,35 @@
         <div class="container px-4 px-lg-5 my-5">
             <div class="text-center text-white">
                 <h1 class="display-4 fw-bolder">Bienes Raices Haxa</h1>
-                <p class="lead fw-normal text-white-50 mb-0">Bienvenidos</p>
+                <p class="lead fw-normal text-white-50 mb-0">Contactenos</p>
             </div>
         </div>
     </header>
     <!-- Section-->
-    <?php
-    $idOk = false;
-    $idVentasOk = false;
-
-    if (isset($_GET['idVentas'])) {
-        $idVentas = $_GET['idVentas'];
-        $idVentasOk = true;
-    }
-    if ($idVentasOk) {
-        $validacion = true;
-        require_once 'consulta.php';
-        $consulta = "SELECT * FROM ventas where idVentas=$idVentas";
-        $query = consulta($consulta);
-
-        if ($query->num_rows > 0) {
-            while ($row = $query->fetch_assoc()) {
-                $imagen = $row["imagen"];
-                $ubicacion = $row["ubicacion"];
-                $descripcion = $row["descripcion"];
-                $precio = $row["precio"];
-            }
-        } else {
-            $validacion = false;
-        }
-    }
-
-    ?>
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                <div style="padding: 0 15px 0 -2300px;">
-                    <?php
-                    echo '<img  height="250" src="data:image/jpeg;base64,' . base64_encode($imagen) . '"/>';
-                    ?>
-                    <?php
-                    $price = "<strong><i> Precio: </i> </strong>";
-                    $description = "<i> Descripcion: </i>";
-                    ?>
-                    <div>
-                        <!-- Product name-->
-                        <br />
-                        <h5 class="fw-bolder"><?php echo $ubicacion ?></h5>
-                        <!-- Product description -->
-                        <h9><?php echo $description;
-                            echo $descripcion ?></h9>
-                        <!-- Product price-->
-                        <p><?php echo $price;
-                            echo "$";
-                            echo $precio;  ?> </p>
-                        <!-- <span class="text-muted text-decoration-line-through">$20.00</span> -->
-                    </div>
-                    <div>
-                        <H6><strong>Importante!!!</strong></H6>
-                        <p>Si desea encontrar su opcion ideal, comunicarse con:<br />
-                            Brandon Zamora:(+506) 8370-6711<br />
-                        </p>
-                    </div>
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div>
-                            <button><a href="ventas.php"><em><u>Volver al inicio</u></em></a></button>
-                        </div>
-                    </div>
-                </div>
+                <h3>Informacion para contactar<br></h3><br>
+                <h6>Brandon Zamora: (+506) 8370-6711 <br><br>
+                    Rocio Rico: (+52) 81-3402-6249</h6>
+                    <br>
             </div>
+            <div>
+                <br>
+                <img src="images/logo.png" style="align-items: center;">
+            </div>
+
+
+
+
+
     </section>
     <!-- Footer-->
-    <footer class="py-5 bg-dark">
+    <!-- <footer class="py-5 bg-dark">
         <div class="container">
             <p class="m-0 text-center text-white">The Web Site created by Dennis Zamora Araya</p>
         </div>
-    </footer>
+    </footer> -->
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
