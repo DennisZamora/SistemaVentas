@@ -37,7 +37,7 @@ function insertar($imagen, $ubicacion, $descripcion, $precio)
     $resultado = mysqli_query($conexion, $query);
 
     if ($resultado) {
-        header("location:index.php");
+        header("location:lotes.php");
     } else {
         echo "No se inserto";
     }
