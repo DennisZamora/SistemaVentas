@@ -69,32 +69,31 @@
     </header>
     <!-- Section-->
     <?php
+    $idAlquilerOk = false;
 
     if (isset($_GET['idAlquiler'])) {
         $id = $_GET['idAlquiler'];
-    } else {
-        $id = "";
-    }
-
-
-    $validacion = true;
-
-    require_once 'consulta.php';
-
-    $consulta = "SELECT * FROM alquiler where id=$id";
-
-    $query = consulta($consulta);
-
-    if ($query->num_rows > 0) {
-        while ($row = $query->fetch_assoc()) {
-            $imagen = $row["imagen"];
-            $ubicacion = $row["ubicacion"];
-            $descripcion = $row["descripcion"];
-            $precio = $row["precio"];
+        $idAlquilerOk = true;
+    } 
+    
+    if ($idAlquilerOk){
+        $validacion = true;
+        require_once 'consulta.php';
+        $consulta = "SELECT * FROM alquiler where id=$id";
+        $query = consulta($consulta);
+    
+        if ($query->num_rows > 0) {
+            while ($row = $query->fetch_assoc()) {
+                $imagen = $row["imagen"];
+                $ubicacion = $row["ubicacion"];
+                $descripcion = $row["descripcion"];
+                $precio = $row["precio"];
+            }
+        } else {
+            $validacion = false;
         }
-    } else {
-        $validacion = false;
     }
+    
     ?>
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
@@ -118,6 +117,12 @@
                             echo "$";
                             echo $precio;  ?> </p>
                         <!-- <span class="text-muted text-decoration-line-through">$20.00</span> -->
+                    </div>
+                    <div>
+                        <H6><strong>Importante!!!</strong></H6>
+                        <p>Si desea encontrar su opcion ideal, comunicarse con:<br />
+                            Brandon Zamora:(+506) 8370-6711<br />
+                        </p>
                     </div>
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                         <div >

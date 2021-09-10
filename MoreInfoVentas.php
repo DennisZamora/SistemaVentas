@@ -45,9 +45,8 @@
                                 <hr class="dropdown-divider" />
                             </li>
                         </ul>
-                    </li>  
-                   
-                    <li class="nav-item"><a class="nav-link" href="login.php">Iniciar Sesion</a></li>                
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="login.php">Iniciar Sesion</a></li>
                 </ul>
                 <!-- <form class="d-flex">
                         <button class="btn btn-outline-dark" type="submit">
@@ -70,65 +69,70 @@
     </header>
     <!-- Section-->
     <?php
-    include('conexion/conexion.php');
-    $conexion = conecta();
-    $consulta = "select * from ventas";
-    $resultado = mysqli_query($conexion, $consulta);
-    ?>
-    <form action="MoreInfoVentas.php" method="GET">
-        <section class="py-5">
-            <div class="container px-4 px-lg-5 mt-5">
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    <?php foreach ($resultado as $ventas) { ?>
-                        <div class="col mb-5">
-                            <div class="card h-100">
-                                <!-- Sale badge-->
-                                <!-- <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div> -->
-                                <!-- Product Id -->
-                                <input type="hidden" name="id" value="<?php echo htmlspecialchars($ventas['idVentas']); ?>">
-                                <!-- Product image-->
-                                <?php
-                                echo '<img  height="170" src="data:image/jpeg;base64,' . base64_encode($ventas['imagen']) . '"/>';
-                                ?>
-                                <!-- Product details-->
-                                <div class="card-body p-4">
-                                    <?php
-                                    $precio = "<strong><i> Precio: </i> </strong>";
-                                    $descripcion = "<i> Descripcion: </i>";
-                                    ?>
-                                    <div class="text-center">
-                                        <!-- Product name-->
-                                        <h5 class="fw-bolder"><?php echo $ventas['ubicacion'] ?></h5>
-                                        <!-- Product reviews-->
-                                        <div class="d-flex justify-content-center small text-warning mb-2">
-                                            <div class="bi-star-fill"></div>
-                                            <div class="bi-star-fill"></div>
-                                            <div class="bi-star-fill"></div>
-                                            <div class="bi-star-fill"></div>
-                                            <div class="bi-star-fill"></div>
-                                        </div>
-                                        <!-- Product description -->
-                                        <h9><?php echo $descripcion;
-                                            echo $ventas['descripcion'] ?></h9>
-                                        <!-- Product price-->
-                                        <p><?php echo $precio;
-                                            echo "$";
-                                            echo $ventas['precio'];  ?> </p>
-                                        <!-- <span class="text-muted text-decoration-line-through">$20.00</span> -->
-                                    </div>
-                                </div>
-                                <!-- Product actions-->
-                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                    <div class="text-center">
-                                        <button type="submit" name="idVentas" class="btn btn-outline-dark mt-auto" value="<?php echo htmlspecialchars($ventas['idVentas']); ?>">Mas informacion</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    <?php } ?>
-        </section>
-    </form>
+    $idOk = false;
+    $idVentasOk = false;
 
+    if (isset($_GET['idVentas'])) {
+        $idVentas = $_GET['idVentas'];
+        $idVentasOk = true;
+    }
+    if ($idVentasOk) {
+        $validacion = true;
+        require_once 'consulta.php';
+        $consulta = "SELECT * FROM ventas where idVentas=$idVentas";
+        $query = consulta($consulta);
+
+        if ($query->num_rows > 0) {
+            while ($row = $query->fetch_assoc()) {
+                $imagen = $row["imagen"];
+                $ubicacion = $row["ubicacion"];
+                $descripcion = $row["descripcion"];
+                $precio = $row["precio"];
+            }
+        } else {
+            $validacion = false;
+        }
+    }
+
+    ?>
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                <div style="padding: 0 15px 0 -2300px;">
+                    <?php
+                    echo '<img  height="250" src="data:image/jpeg;base64,' . base64_encode($imagen) . '"/>';
+                    ?>
+                    <?php
+                    $price = "<strong><i> Precio: </i> </strong>";
+                    $description = "<i> Descripcion: </i>";
+                    ?>
+                    <div>
+                        <!-- Product name-->
+                        <br />
+                        <h5 class="fw-bolder"><?php echo $ubicacion ?></h5>
+                        <!-- Product description -->
+                        <h9><?php echo $description;
+                            echo $descripcion ?></h9>
+                        <!-- Product price-->
+                        <p><?php echo $price;
+                            echo "$";
+                            echo $precio;  ?> </p>
+                        <!-- <span class="text-muted text-decoration-line-through">$20.00</span> -->
+                    </div>
+                    <div>
+                        <H6><strong>Importante!!!</strong></H6>
+                        <p>Si desea encontrar su opcion ideal, comunicarse con:<br />
+                            Brandon Zamora:(+506) 8370-6711<br />
+                        </p>
+                    </div>
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div>
+                            <button><a href="ventas.php"><em><u>Volver al inicio</u></em></a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
     <!-- Footer-->
     <footer class="py-5 bg-dark">
         <div class="container">
