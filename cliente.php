@@ -19,23 +19,24 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="administrador.php">Bienes Raices Haxa</a>
+            <a class="navbar-brand" href="cliente.php">Bienes Raices Haxa</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="administrador.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="cliente.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="aboutUs.php">Contactenos</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Insertar datos</a>
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorias</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="insertarVentas.php">Insertar ventas</a></li>
+                            <li><a class="dropdown-item" href="ventas.php">Ventas</a></li>
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
-                            <li><a class="dropdown-item" href="insertarAlquiler.php">Insertar rentas</a></li>
+                            <li><a class="dropdown-item" href="alquiler.php">Rentas</a></li>
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
-                            <li><a class="dropdown-item" href="insertarLotes.php">Insertar lotes</a></li>
+                            <li><a class="dropdown-item" href="lotes.php">Lotes</a></li>
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
@@ -63,25 +64,26 @@
         </div>
     </header>
     <!-- Section-->
-    <section class="py-5">
-        <div class="container px-4 px-lg-5 mt-5">
-            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                <div class="col mb-5">
-                    <form action="validacionVenta.php" method="post" enctype="multipart/form-data">
-                        Select image to upload:
-                        <input type="file" name="image" /> <br>
-                        <br><textarea name="ubicacion" id="unicacion" placeholder="Ubicacion" cols="50" rows="2"></textarea>
-                        <br><textarea name="descripcion" id="descripcion" placeholder="Descripcion" cols="50" rows="2"></textarea>
-                        <br><input type="text" id="precio" placeholder="Precio" name="precio" /><br>
-                        <br><input type="submit" name="submit" value="Enviar" />
-                    </form>
-                </div>
-                
-            </div>
-        </div>
-    </section>
-    <!-- Footer-->
+    <?php
+    include('conexion/conexion.php');
+    $conexion = conecta();
+    $consulta = "select * from alquiler";
+    $resultado = mysqli_query($conexion, $consulta);
+    ?>
+    <form action="MoreInfo.php" method="GET">
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                  
+        </section>
+    </form>
 
+    <!-- Footer-->
+    <!-- <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">The Web Site created by Dennis Zamora Araya</p>
+        </div>
+    </footer> -->
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->

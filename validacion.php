@@ -1,5 +1,5 @@
 <?php
-require_once 'conexiones/conexion.php';
+include 'conexion/conexion.php';
 if (isset($_POST['usuario'])) {
   $usuario = $_POST['usuario'];
 } else {
@@ -36,22 +36,24 @@ function usuario($usuario)
 
 
 $conexion = conecta();
-$consulta = "SELECT username,contrasena FROM usuario where username='$usuario' and contrasena='$contrasena'";
+$consulta = "SELECT username,contrasena,idRol FROM usuario where username='$usuario' and contrasena='$contrasena'";
 $resultado = mysqli_query($conexion, $consulta);
 
-$filas = mysqli_num_rows($resultado);
+$filas = mysqli_fetch_array($resultado);
 
-if ($filas >= 1) {
+if ($filas['idRol']==1) {  //administrador
   session_start();
-  $_SESSION['usuario'] = $usuario;
-  header("location:principal.php");
-} else {
+  header("location:administrador.php");
+} elseif ($filas['idRol']==2) {
+  session_start();
+  header("location:cliente.php");
+}else {
 ?>
   <?php
-  include("index.php");
+  include("login.php");
   ?>
 
-  <!-- <script language="javascript">alert("ERROR AL INICIAR SESION");</script>; -->
+ 
 <?php
 }
 mysqli_free_result($resultado);

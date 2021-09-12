@@ -11,7 +11,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
     </style>
     <link rel="stylesheet" type="text/css" href="css/index.css">
-    <link rel="icon" href="imagenes/icono.png">
+    <link rel="icon" href="images/logo.png">
     <link rel="stylesheet" href="css/sweetalert2.min.css">
 </head>
 

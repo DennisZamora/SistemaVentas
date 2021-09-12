@@ -63,25 +63,26 @@
         </div>
     </header>
     <!-- Section-->
-    <section class="py-5">
-        <div class="container px-4 px-lg-5 mt-5">
-            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                <div class="col mb-5">
-                    <form action="validacionVenta.php" method="post" enctype="multipart/form-data">
-                        Select image to upload:
-                        <input type="file" name="image" /> <br>
-                        <br><textarea name="ubicacion" id="unicacion" placeholder="Ubicacion" cols="50" rows="2"></textarea>
-                        <br><textarea name="descripcion" id="descripcion" placeholder="Descripcion" cols="50" rows="2"></textarea>
-                        <br><input type="text" id="precio" placeholder="Precio" name="precio" /><br>
-                        <br><input type="submit" name="submit" value="Enviar" />
-                    </form>
-                </div>
-                
-            </div>
-        </div>
-    </section>
-    <!-- Footer-->
+    <?php
+    include('conexion/conexion.php');
+    $conexion = conecta();
+    $consulta = "select * from alquiler";
+    $resultado = mysqli_query($conexion, $consulta);
+    ?>
+    <form action="MoreInfo.php" method="GET">
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                  
+        </section>
+    </form>
 
+    <!-- Footer-->
+    <!-- <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">The Web Site created by Dennis Zamora Araya</p>
+        </div>
+    </footer> -->
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
