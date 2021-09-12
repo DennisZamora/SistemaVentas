@@ -42,7 +42,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item" style="text-align: right;"><a class="nav-link" href="login.php">Iniciar Sesion</a></li>     
+                    <li class="nav-item"><a class="nav-link" href="login.php">Iniciar Sesion</a></li>
                 </ul>
                 <!-- <form class="d-flex">
                         <button class="btn btn-outline-dark" type="submit">

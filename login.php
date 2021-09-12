@@ -18,7 +18,7 @@
 <body id="contenido">
     <form id="login" action="validacion.php" method="post" class="form-box">
         <h1>
-            <img class="imagen" src="imagenes/1.png" alt="Profile Photo">
+            <img class="imagen" src="images/logo.png" alt="Profile Photo">
         </h1>
         <h5 class="advice">
             Fill in the fields to login
