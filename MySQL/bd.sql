@@ -46,12 +46,12 @@ precio double not null,
 PRIMARY KEY(idLotes)
 );
 
-insert into rol (idRol,descripcionRol) values 
+insert into rol (rol,descripcionRol) values 
 ('admin','Administrador'),
 ('usuario','Usuario regular');
 
 insert into usuario (nombre,last_name,username,email,contrasena,idRol)values
-('Dennis','Zamora','dennis','denniszamora@hotmail.com','dennis123',1);
+('Brandon','Zamora','brandon','brandon@hotmail.com','brandon99',1);
 
 insert into usuario (nombre,last_name,username,email,contrasena,idRol)values
 ('Jesus','Vargas','jesus','jesusvargas@hotmail.com','jesus123',2);
