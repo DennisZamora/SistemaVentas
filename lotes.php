@@ -40,10 +40,6 @@
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
-                            <li><a class="dropdown-item" href="insertar.php">Agregar</a></li>
-                            <li>
-                                <hr class="dropdown-divider" />
-                            </li>
                         </ul>
                     </li>  
                    

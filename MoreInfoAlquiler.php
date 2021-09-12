@@ -40,10 +40,6 @@
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
-                            <li><a class="dropdown-item" href="insertar.php">Agregar</a></li>
-                            <li>
-                                <hr class="dropdown-divider" />
-                            </li>
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="login.php">Iniciar Sesion</a></li>     
@@ -97,10 +93,10 @@
     ?>
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
-            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-left">
                 <div class="col mb-5">
                     <?php
-                    echo '<img  height="300" src="data:image/jpeg;base64,' . base64_encode($imagen) . '"/>';                    
+                    echo '<img  height="300" src="data:image/jpeg;base64,' . base64_encode($imagen) . '"/>';
                     ?>
                     <?php
                     $price = "<strong><i> Precio: </i> </strong>";
@@ -108,7 +104,8 @@
                     ?>
                     <div>
                         <!-- Product name-->
-                        <br/><h5 class="fw-bolder"><?php echo $ubicacion ?></h5>
+                        <br />
+                        <h5 class="fw-bolder"><?php echo $ubicacion ?></h5>
                         <!-- Product description -->
                         <h9><?php echo $description;
                             echo $descripcion ?></h9>
@@ -125,8 +122,8 @@
                         </p>
                     </div>
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div >
-                            <button><a href="alquiler.php"><em><u>Volver al inicio</u></em></a></button>
+                        <div>
+                            <br><button><a href="lotes.php"><em><u>Volver al inicio</u></em></a></button>
                         </div>
                     </div>
 
